@@ -1,0 +1,6 @@
+res://Enemies/enemy_1.tscn::ff64063c0e2eb2097df616304c86bd70::1697004395::res://.godot/exported/133200997/export-b3a26ca6175bec0d7ef99f5fbb96b6d9-enemy_1.scn
+res://Enemies/particle.tscn::f0dd94bc06eb1f7e0d6595fc18f38b59::1697004395::res://.godot/exported/133200997/export-b14855f508c3dd2de5972f58a38bd544-particle.scn
+res://Player/bullet.tscn::0bd969cf9d0381458370294f7e8b2d66::1697004395::res://.godot/exported/133200997/export-6dd23c115fe37d07d4eed2f5dd25d7d0-bullet.scn
+res://Player/jet.tscn::5c52e7b13f0b9ea9de8812e52d8f29c1::1697004395::res://.godot/exported/133200997/export-7eea91d733d6cc73c5409a803f945015-jet.scn
+res://World/World.tscn::afa0da0b0fb7020c2990c135d420e913::1697006646::res://.godot/exported/133200997/export-de71c21559ba3535c3f0645ed0c93644-World.scn
+res://default_env.tres::17ce5a003b9b546c9f026a8910123257::1697006646::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res

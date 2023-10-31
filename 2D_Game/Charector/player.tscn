@@ -1,0 +1,177 @@
+[gd_scene load_steps=25 format=3 uid="uid://cnksfentib6at"]
+
+[ext_resource type="Texture2D" uid="uid://b6wl5po0lm64y" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_cjhj1"]
+[ext_resource type="Script" path="res://Charector/player.gd" id="1_ipb43"]
+[ext_resource type="Texture2D" uid="uid://26e62y0c0umi" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_1.png" id="2_72ly1"]
+[ext_resource type="Texture2D" uid="uid://dat4o2nhnj7j3" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_2.png" id="3_sdsmo"]
+[ext_resource type="Texture2D" uid="uid://b2lnrvrlohqne" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_3.png" id="4_m7hu1"]
+[ext_resource type="Texture2D" uid="uid://dg672q2xh1rm7" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_4.png" id="5_fbl6p"]
+[ext_resource type="Texture2D" uid="uid://du2aycdqn8si6" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_5.png" id="6_g32fw"]
+[ext_resource type="Texture2D" uid="uid://ee5mt47p6q4f" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/idle/Warrior_Idle_6.png" id="7_gx465"]
+[ext_resource type="Texture2D" uid="uid://dbv42k8tdijkd" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_1.png" id="9_otqks"]
+[ext_resource type="Texture2D" uid="uid://0d8x7yafsc50" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_2.png" id="10_wwdqd"]
+[ext_resource type="Texture2D" uid="uid://cntvmt7urmh22" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Fall/Warrior_Fall_3.png" id="11_5jj0r"]
+[ext_resource type="Texture2D" uid="uid://by336xlmhlr8" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Jump/Warrior_Jump_1.png" id="12_55k7w"]
+[ext_resource type="Texture2D" uid="uid://d3gmu7o3skryr" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Jump/Warrior_Jump_2.png" id="13_42l4w"]
+[ext_resource type="Texture2D" uid="uid://b23xbwrgewhee" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Jump/Warrior_Jump_3.png" id="14_3ov4h"]
+[ext_resource type="Texture2D" uid="uid://cwxyq7qwjo76" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_1.png" id="15_dj0us"]
+[ext_resource type="Texture2D" uid="uid://dyt04kh6usi6y" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_2.png" id="16_7whsw"]
+[ext_resource type="Texture2D" uid="uid://cxgijvwantglp" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_3.png" id="17_0hsuu"]
+[ext_resource type="Texture2D" uid="uid://jb5lurslj4cs" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_4.png" id="18_p7qs5"]
+[ext_resource type="Texture2D" uid="uid://d01n8p10xsfjg" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_5.png" id="19_wnm2p"]
+[ext_resource type="Texture2D" uid="uid://bcf2qjqyp0lgh" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_6.png" id="20_hmshs"]
+[ext_resource type="Texture2D" uid="uid://cn0aamdx0cgwn" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_7.png" id="21_hguj7"]
+[ext_resource type="Texture2D" uid="uid://b047mth2w3qk3" path="res://Art/Warrior-V1.3/Warrior/Individual Sprite/Run/Warrior_Run_8.png" id="22_csoxk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8tok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_72ly1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sdsmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m7hu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fbl6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g32fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gx465")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_55k7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_42l4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ov4h")
+}],
+"loop": false,
+"name": &"Jump_double",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_otqks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wwdqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5jj0r")
+}],
+"loop": false,
+"name": &"Jump_end",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_55k7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_55k7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_42l4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_42l4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ov4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_otqks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wwdqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5jj0r")
+}],
+"loop": true,
+"name": &"Jump_loop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_55k7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_42l4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3ov4h")
+}],
+"loop": false,
+"name": &"Jump_start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_dj0us")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7whsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0hsuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_p7qs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wnm2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hmshs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hguj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_csoxk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caa2k"]
+radius = 9.0
+height = 45.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ipb43")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 22)
+sprite_frames = SubResource("SpriteFrames_y8tok")
+animation = &"Jump_loop"
+autoplay = "Idle"
+frame_progress = 0.50852
+centered = false
+offset = Vector2(-32, -41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_caa2k")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_cjhj1")
+hframes = 4
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://y7ejfvncp0sa"]
+
+[ext_resource type="Texture2D" uid="uid://b8fyjgni8k6se" path="res://Player/Player_Ship_Sprite.png" id="1"]
+[ext_resource type="Script" path="res://World/enemy_spawn.gd" id="1_pdp2h"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_w00gr"]
+[ext_resource type="Texture2D" uid="uid://d3xhbjmgnykhj" path="res://Enemies/enemy_sprites.png" id="2_jmogu"]
+[ext_resource type="Texture2D" uid="uid://b0tqrvb0vn3gt" path="res://World/BG1.png" id="2_o2fq5"]
+[ext_resource type="Script" path="res://World/Lives.gd" id="3_u2k2a"]
+[ext_resource type="Script" path="res://World/score.gd" id="7_6pp65"]
+[ext_resource type="Script" path="res://World/last_score.gd" id="8_b3trd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_umpkw"]
+radius = 7.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_pdp2h")
+
+[node name="Bg1" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(160, 90)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("2_o2fq5")
+
+[node name="Lives" type="Node2D" parent="."]
+script = ExtResource("3_u2k2a")
+
+[node name="Life1" type="Sprite2D" parent="Lives"]
+position = Vector2(16, 16)
+texture = ExtResource("2_jmogu")
+vframes = 10
+frame = 8
+
+[node name="Life2" type="Sprite2D" parent="Lives"]
+position = Vector2(40, 16)
+texture = ExtResource("2_jmogu")
+vframes = 10
+frame = 8
+
+[node name="Life3" type="Sprite2D" parent="Lives"]
+position = Vector2(64, 16)
+texture = ExtResource("2_jmogu")
+vframes = 10
+frame = 8
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(160, 64)
+script = ExtResource("1_w00gr")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1")
+hframes = 2
+vframes = 4
+frame = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+polygon = PackedVector2Array(0, -7, 8, 1, 7, 6, -7, 6, -8, 1)
+
+[node name="Earth" type="StaticBody2D" parent="." groups=["Earth"]]
+position = Vector2(160, 90)
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Earth"]
+texture = ExtResource("2_jmogu")
+vframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+shape = SubResource("CircleShape2D_umpkw")
+
+[node name="score_keeping" type="Label" parent="."]
+offset_left = 225.0
+offset_top = 3.0
+offset_right = 281.0
+offset_bottom = 29.0
+text = "Score : "
+script = ExtResource("7_6pp65")
+
+[node name="play" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 76.0
+offset_top = 64.0
+offset_right = 246.0
+offset_bottom = 90.0
+text = "Press space ␣ to play!"
+
+[node name="last_score" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 117.0
+offset_top = 94.0
+offset_right = 207.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 10
+text = "Your last score : "
+script = ExtResource("8_b3trd")

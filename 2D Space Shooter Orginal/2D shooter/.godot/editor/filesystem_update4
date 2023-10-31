@@ -1,0 +1,8 @@
+res://default_env.tres
+res://World/World.tscn
+res://Player/bullet.tscn
+res://Enemies/enemy_1.tscn
+res://Enemies/particle.tscn
+res://Player/jet.tscn
+res://Player/Player.gd
+res://World/Lives.gd

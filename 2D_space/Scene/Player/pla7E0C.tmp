@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt34pilrd36as"]
+
+[ext_resource type="Texture2D" uid="uid://3hdo0ew412fj" path="res://Art/Player.png" id="1_qv3fe"]
+
+[sub_resource type="GDScript" id="GDScript_vd6kc"]
+resource_name = "Script"
+script/source = "extends CharacterBody2D
+
+signal laser_shot(laser)
+
+@export var acceleration := 10.0
+@export var max_speed := 350.0
+@export var rotaion_speed := 150.0
+@export var dash_speed := 500.0
+@export var dash_duration := 0.3
+
+@onready var muzzle = $muzzle
+
+var can_dash = true
+var dash_timer = 0.0
+var laser_scene = preload(\"res://Scene/laser.tscn\")
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"shoot\"):
+		shoot_laser()
+		
+	if Input.is_action_just_pressed(\"dash\") and can_dash:
+		start_dash()
+	if dash_timer > 0.0:
+		dash_timer -= delta
+		velocity = Vector2(dash_speed, 0).rotated(rotation)  # Override velocity during dash
+		if dash_timer <= 0.0:
+			end_dash()
+			
+func _physics_process(delta):
+	# if not press return 0 if press \"up\" return -1 \"down\" return 1
+	var input_vector := Vector2(0, Input.get_axis(\"up\",\"down\")) 
+	
+	# player movement
+	velocity += input_vector.rotated(rotation) * acceleration 
+	velocity = velocity.limit_length(max_speed)
+	
+	# rotate player
+	if Input.is_action_pressed(\"right\"):
+		rotate(deg_to_rad(rotaion_speed*delta))
+	if Input.is_action_pressed(\"left\"):
+		rotate(deg_to_rad(-rotaion_speed*delta))
+		
+	# if stop it will slowly stop
+	if input_vector.y == 0:
+		velocity = velocity.move_toward(Vector2.ZERO,3)
+	
+	move_and_slide()
+	
+	# screen size var
+	var screen_size = get_viewport_rect().size 
+	
+	# if outsite screen tele to opposite
+	if global_position.y < 0: 
+		global_position.y = screen_size.y
+	elif global_position.y > screen_size.y: 
+		global_position.y = 0
+	if global_position.x < 0: 
+		global_position.x = screen_size.x
+	elif global_position.x > screen_size.x: 
+		global_position.x = 0
+		
+func shoot_laser():
+	var l = laser_scene.instantiate()
+	l.global_position = muzzle.global_position
+	l.rotation = rotation
+	emit_signal(\"laser_shot\", l)
+	
+func start_dash():
+	dash_timer = dash_duration
+	can_dash = false
+
+func end_dash():
+	velocity = Vector2.ZERO
+	can_dash = true
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjx8d"]
+size = Vector2(488.889, 537.385)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(600, 360)
+scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 5
+script = SubResource("GDScript_vd6kc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.785398
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qv3fe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_sjx8d")
+
+[node name="muzzle" type="Node2D" parent="."]
+position = Vector2(0, -90)
+scale = Vector2(0.3, 0.3)
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

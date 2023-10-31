@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnnn2uoplwdwb"]
+
+[ext_resource type="Texture2D" uid="uid://b8fyjgni8k6se" path="res://Player/Player_Ship_Sprite.png" id="1_atqs5"]
+[ext_resource type="Script" path="res://Enemies/particle.gd" id="2_eaol0"]
+
+[node name="particle" type="Sprite2D"]
+modulate = Color(1, 0.705882, 1, 1)
+position = Vector2(-1, 0)
+texture = ExtResource("1_atqs5")
+hframes = 2
+vframes = 4
+frame = 6
+script = ExtResource("2_eaol0")

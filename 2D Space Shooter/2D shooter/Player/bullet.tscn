@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv745ofn7cwry"]
+
+[ext_resource type="Script" path="res://Player/shoot.gd" id="1_1n88v"]
+[ext_resource type="Texture2D" uid="uid://b8fyjgni8k6se" path="res://Player/Player_Ship_Sprite.png" id="1_lie0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqc4v"]
+size = Vector2(4, 4)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Bullet"]]
+script = ExtResource("1_1n88v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lie0a")
+hframes = 2
+vframes = 4
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wqc4v")

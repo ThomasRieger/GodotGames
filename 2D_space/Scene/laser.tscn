@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmgmhhtobijw6"]
+
+[ext_resource type="Texture2D" uid="uid://c6d4g00n2m4yg" path="res://Art/Eakjpg.jpg" id="1_huw0i"]
+
+[sub_resource type="GDScript" id="GDScript_1a1do"]
+resource_name = "Laser"
+script/source = "extends Area2D
+
+var movement_vector := Vector2(0,-1)
+@export var speed := 500.0
+
+# shooting speed
+func _physics_process(delta):
+	global_position += movement_vector.rotated(rotation) * speed * delta
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qg6ek"]
+radius = 6.0
+height = 86.0
+
+[node name="Laser" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = SubResource("GDScript_1a1do")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -34)
+scale = Vector2(0.670391, 0.669922)
+texture = ExtResource("1_huw0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -33)
+shape = SubResource("CapsuleShape2D_qg6ek")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -32.5)
+scale = Vector2(0.6, 3.85)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
